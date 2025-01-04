@@ -1,5 +1,6 @@
 import styles from "../styles/MovieDetails.module.css";
 import Emoji from "./Emoji";
+import StarRating from "./StarRating";
 
 // const movie = {
 //     title: "Spider-Man: No Way Home",
@@ -14,7 +15,11 @@ import Emoji from "./Emoji";
 // };
 
 // function MovieDetails({ movie }) {
-function MovieDetails({ movieDetails }) {
+function MovieDetails({
+    movieDetails,
+    handleCloseMovieDetail,
+    handleAddMovieToWatchList,
+}) {
     const {
         Title,
         Poster,
@@ -27,9 +32,16 @@ function MovieDetails({ movieDetails }) {
         Genre,
     } = movieDetails;
 
+    function handleAction(userRating) {
+        handleAddMovieToWatchList(movieDetails, userRating);
+    }
+
     return (
         <div className={styles.movieDetails}>
-            <button className={styles.closeMovie}>
+            <button
+                className={styles.closeMovie}
+                onClick={handleCloseMovieDetail}
+            >
                 <Emoji txt="❌" />
             </button>
             <div className={styles.details}>
@@ -44,7 +56,12 @@ function MovieDetails({ movieDetails }) {
                     </p>
                 </div>
             </div>
-
+            <StarRating
+                color="red"
+                defaultRating={5}
+                size={10}
+                action={handleAction}
+            />
             <div className={styles.description}>
                 <p>
                     <strong>PLOT : </strong>

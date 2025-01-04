@@ -1,7 +1,7 @@
 import styles from "../styles/WatchedMovie.module.css";
 import Emoji from "./Emoji";
 
-function WatchedMovie({ image, name, imdbRating, userRating, length }) {
+function WatchedMovie({ image, name, imdbRating, userRating, runtime }) {
     return (
         <div className={styles.movie}>
             <div className={styles.imageBox}>
@@ -20,7 +20,7 @@ function WatchedMovie({ image, name, imdbRating, userRating, length }) {
                     </span>
                     <span>
                         <Emoji txt="🕗" />
-                        <p>{length} min</p>
+                        <p>{runtime}</p>
                     </span>
                 </div>
             </div>
